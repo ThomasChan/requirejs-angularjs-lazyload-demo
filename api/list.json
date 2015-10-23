@@ -1,0 +1,54 @@
+[
+    {
+        "href" : "1",
+        "headpic_src" : "../public/img/headpic.png",
+        "upvote" : 2,
+        "username" : "呵呵哒",
+        "user_status" : "在线",
+        "city" : "北京",
+        "school" : "北大",
+        "ability" : "计算机",
+        "short_intro" : "这个男人来自地球",
+        "course" : ["放开她", "让我来"],
+        "long_intro" : "心力交猝"
+    },
+    {
+        "href" : "1",
+        "headpic_src" : "../public/img/headpic.png",
+        "upvote" : 2,
+        "username" : "呵呵哒",
+        "user_status" : "在线",
+        "city" : "北京",
+        "school" : "北大",
+        "ability" : "计算机",
+        "short_intro" : "这个男人来自地球",
+        "course" : ["放开她", "让我来"],
+        "long_intro" : "心力交猝"
+    },
+    {
+        "href" : "1",
+        "headpic_src" : "../public/img/headpic.png",
+        "upvote" : 2,
+        "username" : "呵呵哒",
+        "user_status" : "在线",
+        "city" : "北京",
+        "school" : "北大",
+        "ability" : "计算机",
+        "short_intro" : "这个男人来自地球",
+        "course" : ["放开她", "让我来"],
+        "long_intro" : "心力交猝"
+    },
+    {
+        "href" : "1",
+        "headpic_src" : "../public/img/headpic.png",
+        "upvote" : 2,
+        "username" : "呵呵哒",
+        "user_status" : "在线",
+        "city" : "北京",
+        "school" : "北大",
+        "ability" : "计算机",
+        "short_intro" : "这个男人来自地球",
+        "course" : ["放开她", "让我来"],
+        "long_intro" : "心力交猝"
+    }
+]

@@ -1,0 +1,244 @@
+
+html,body,.wrapper{
+    height:100%;
+    min-height:100%;
+}
+
+
+/*
+首页的样式
+*/
+
+
+.item-lists{
+    padding: 10px;
+    background:rgb(242, 244, 241);
+    -webkit-transition:all .2s ease-out;
+    -moz-transition:all .2s ease-out;
+    -o-transition:all .2s ease-out;
+    -ms-transition:all .2s ease-out;
+    transition:all .2s ease-out;
+}
+
+.item{
+    padding: 10px 5px;
+    border:1px solid rgb(218,218,218);
+    border-radius: 4px;
+    background: #fff;
+    margin-bottom: 10px;
+    position:relative;
+}
+.item>a{
+    position:absolute;
+    width:100%;height: 100%;top:0;left:0;
+}
+.item-labels{
+    border-bottom: 1px dotted rgb(225,225,225);
+    padding-bottom:5px;
+}
+.item-headpicture,
+.item-name{
+    float:left;
+}
+.item-wanna-meet{
+    margin-top:5px;line-height: 1.68;
+    white-space: nowrap;font-size:9px;
+}
+.item-headpicture .detail-upvote{
+    margin:-4px 2px 0 0;
+}
+.item-name,
+.item-detail{
+    margin-left:10px;
+}
+.item-name{
+    /*width: 20%;*/
+    text-align: center;
+    overflow:hidden;
+}
+.item-detail{
+    width: auto;
+    overflow: hidden;
+}
+.item-short-intro{
+    color: rgb(118,118,118);
+    /*width:100%;*/
+    text-align: center;
+    /*margin:8px 0;*/
+    font-size:1.1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.item-ability{
+    font-size:1.1rem;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    width:80%;
+    padding:3px;
+    margin: 4px 10px 4px auto;
+    border-width:1px;
+    border-style:solid;
+    border-radius:3px;
+    color:#fff;
+}
+.item-ability-1{
+    border-color:#ff9054;
+    background:#ffad81;
+}
+.item-ability-2{
+    border-color:#65daa7;
+    background:#86e2ba;
+}
+.item-ability-3{
+    border-color:#df6ef8;
+    background:#db8cf8;
+}
+.item-ability-4{
+    border-color:#65dad6;
+    background:#86dfe2;
+}
+.item-ability-5{
+    border-color:#ff9054;
+    background:#ffad81;
+}
+.item-ability-6{
+    border-color:#65aada;
+    background:#86b8e2;
+}
+.item-long-intro h3{
+    color:rgb(91,91,91);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+.item-long-intro p{
+    margin-top:-4px;
+    line-height: 1.68
+}
+
+
+
+.wrapper{
+    -webkit-transition:all .3s ease-out;
+    transition:all .3s ease-out;
+    box-shadow: 0px 0px 50px #000;
+    border-radius:0.1px;
+    position:absolute;
+    z-index: 1;
+}
+.my-account{
+    position:fixed;
+    width:80%;
+    height:100%;
+    top:0;
+    right:0;
+    z-index:0;
+    visibility: hidden;
+    background:rgb(242, 244, 241);
+    -webkit-transition:all .3s ease-out;
+    transition:all .3s ease-out;
+}
+.wrapper-slide{
+    position: fixed;
+    -webkit-transition:all .3s ease-out;
+    transition:all .3s ease-out;
+    -webkit-transform: translate3d(-80%,0,0);
+    transform: translate3d(-80%,0,0);
+    overflow: hidden;
+}
+.wrapper-slide+.my-account{
+    /*z-index:0;*/
+    visibility: visible;
+}
+
+
+.account-headpicture-wrap{
+    width:60px;
+    height:80px;
+    margin:  50px auto;
+}
+.account-headpicture-wrap h4{
+    font-size:1.1rem;
+    text-align: center;
+    color:rgb(153,153,153);
+}
+
+.btn-index{
+    margin: 10px auto;
+}
+.btn-logout{
+    /*position:absolute;*/
+    bottom:30px;
+    left:0;right:0;
+}
+
+.my-account-contents{
+    position:absolute;
+    width:100%;
+    top:48px;
+    bottom:0;left:0;right:0;
+    overflow-x:hidden;
+    overflow-y:scroll;
+    padding-bottom:20px;
+}
+
+
+.demand-expand-lists{position:fixed;bottom:0;left:0;right:0;height:41px;z-index:9;}
+.demand-expand-lists .btn{width:50%;position:absolute;line-height: 40px;font-size:16px;border-radius:0;}
+.demand-expand-lists .btn:first-child{left:0;border-right:none;}
+.demand-expand-lists .btn:last-child{right:0;}
+
+
+.account-icon{
+    text-align: left;
+    padding-left:25px;
+}
+.account-icon>i{
+    display:inline-block;
+    vertical-align: middle;
+    margin-top:-4px;
+    width:18px;height:16px;
+    background-image:url(../img/login-account-ico.png);
+    background-repeat: no-repeat;
+    background-position-x:1px;
+    background-size:cover;
+    margin-right:4px;
+}
+.icon-my-order>i{
+    background-position-y:1px;
+}
+.icon-my-homepage>i{
+    background-position-y:-16px;
+}
+.icon-my-course>i{
+    background-position-y:-33px;
+}
+.icon-order-me>i{
+    height:18px;
+    background-position-y:-51px;
+}
+.icon-my-info>i{
+    background-position-y:-69px;
+}
+.icon-my-publish-demand>i{
+    height:19px;
+    background-position-y:-86px;
+}
+.icon-my-join-demand>i{
+    height:20px;
+    background-position-y:-107px;
+}
+.icon-my-wallet>i{
+    height:19px;
+    background-position-y:-128px;
+}
+.icon-my-message>i{
+    background-position-y:-148px;
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
+    a.btn,.btn-logout,.account-icon{
+        line-height: 2.4!important
+    }
+}

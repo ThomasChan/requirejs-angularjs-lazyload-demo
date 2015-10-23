@@ -1,0 +1,84 @@
+
+<!-- css -->
+<link rel="stylesheet" href="/src/css/common.css">
+<link rel="stylesheet" href="/src/css/index.css">
+
+<!-- wrap -->
+<div class="wrapper {{sidebarStatus ? 'wrapper-slide' :'';}}" style="width:100%;" ng-controller="IndexController">
+
+    <a class="header-account header-account-login header-account-slide" ng-click="sidebarToggle()" style="{{!sidebarStatus ? 'display:none;' :'';}}width:100%;height:100%;right:0;z-index:99999;"></a>
+
+    <!-- 顶栏 -->
+    <div class="header" style="position: fixed;top: 0;left: 0;z-index: 1000000;">
+        <h1 class="title">application</h1>
+        <label for="header-sceening-input" class="header-sceening">
+            <img src="src/img/header-sceening.png" alt="">
+        </label>
+        <input type="checkbox" id="header-sceening-input">
+        <div class="header-sceening-wrap">
+            <div class="triangle"></div>
+            <ul class="header-sceening-options">
+                <li class="header-sceening-option"><a href="index.html?">a</a></li>
+                <li class="header-sceening-option"><a href="index.html?">b</a></li>
+                <li class="header-sceening-option"><a href="index.html?">c</a></li>
+            </ul>
+        </div>
+
+        <!-- if $this->user_id > 0 -->
+        <a class="header-account header-account-login" ng-click="sidebarToggle()">
+            <img src="src/img/header-account.png">
+        </a>
+        <!-- else -->
+        <!-- <a href="login.html" class="header-account">
+            <img src="src/img/header-account.png" alt="">
+        </a> -->
+
+    </div>
+    
+    <div class="loading-wrap" style="{{loadFinish ? 'display:none':'';}}"><span class="loading style-2"></span></div>
+
+    <!-- 列表 -->
+    <div class="item-lists {{!loadFinish?'autoload':'';}}" style="margin-top:50px;  padding-bottom: 70px;">
+        <!-- 单个项目 -->
+        <div class="item" ng-repeat="item in IndexData">
+            <a href="#/shijie/{{item.href}}"></a>
+            <!-- 上半部分 -->
+            <div class="item-labels clearfix">
+                <!-- 头像 -->
+                <div class="item-headpicture">
+                    <div class="account-headpicture headpicture"><img src="{{item.headpic_src}}" alt=""></div>
+                    <div class="item-wanna-meet"><i class="detail-upvote"></i>{{item.upvote}}人想见</div>
+                </div>
+                <!-- 大学和一句话介绍和能力？ -->
+                <div class="item-detail">
+                    <!-- 名字和状态 -->
+                    <div class="item-name">
+                        <h2>{{item.username}}</h2>
+                        <div class="btn btn-status">{{item.user_status}}</div>
+                    </div>
+                    <ul class="item-school">
+                        <li>{{item.city}}</li>
+                        <li>{{item.school}}</li>
+                        <li>{{item.ability}}</li>
+                    </ul>
+                    <p class="item-short-intro">{{item.short_intro}}</p>
+                    <p class="item-ability item-ability-1" ng-repeat="course in item.course">{{course}}</p>
+                </div>
+            </div>
+            <!-- 个人介绍 -->
+            <div class="item-long-intro">
+                <p>{{item.long_intro}}</p>
+            </div>
+        </div>
+        <button style="margin:auto" id="loadMore" class="btn btn-style-9" ng-click="loadMore()">more</button>
+    </div>
+
+    <div class="demand-expand-lists">
+        <a class="btn btn-style-10">list</a>
+        <a href="/需求发布/需求展示.html" class="btn btn-style-10">another</a>
+    </div>
+</div>
+
+<slidebar ng-include="'/views/sidebar.html'">
+...
+</slidebar>

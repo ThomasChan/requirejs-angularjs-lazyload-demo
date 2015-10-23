@@ -1,0 +1,11 @@
+{
+    "name": "application",
+    "version": "0.0.1",
+    "description": "angular.js application with require.js lazy load component's html and js",
+    "dependencies": {
+        "angular": "1.4.7",
+        "angular-route": "1.4.7",
+        "require": "2.1.20"
+    },
+    "author": "thomas chan"
+}

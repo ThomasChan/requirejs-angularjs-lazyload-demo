@@ -1,0 +1,347 @@
+
+
+/*
+
+用户个人详情页
+*/
+
+.detail-header-headpicture{
+    height:200px;overflow:hidden;
+    position:relative;
+}
+.detail-header-headpicture img{
+    width:100%;
+}
+.detail-header-headpicture .logo{
+    width:40%;
+    position:absolute;
+    bottom:5%;
+    left:4%;
+}
+.detail-header-head{
+    background:#fff;
+    border-bottom: 1px solid rgb(225,225,225);
+}
+.detail-header-headpicture .upvote{
+    background:url(../img/upvote.png);
+}
+.detail-header-headpicture .upvoted{
+    background:url(../img/upvoted.png);
+}
+.detail-header-headpicture .upvote,
+.detail-header-headpicture .upvoted{
+    width: 20px;height:20px;
+    position: absolute;
+    bottom:5px;right:5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:contain;
+}
+
+.detail-upvotes{
+    padding:10px 5px;
+    background:#fff;
+    border-top:1px solid rgb(238,238,238);
+}
+
+.detail-header-head .detail-upvotes .detail-upvote-headpicture{
+    width:30px;height:30px;
+    vertical-align: middle;display:inline-block;
+    position: static;margin:0 4px 0 0;border:none;
+}
+
+
+.item-labels{
+    padding-bottom:5px;
+}
+.item-name,
+.item-detail{
+    float:left;
+    margin-left:5px;
+}
+.item-name{
+    margin-left:27%;
+    width: 18%;
+    text-align: center;
+    overflow:hidden;
+}
+.item-name h2{
+    font-size: 1.4rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    margin-top:9px;
+    margin-bottom:7px;
+}
+.item-detail{
+    width: 52%;
+}
+.item-short-intro{
+    color: rgb(118,118,118);
+    width:100%;
+    margin:13px 0 18px 0;
+    font-size:1.1rem;
+    text-align: center;
+}
+
+.detail-header-head .headpicture{
+    position:absolute;
+    width: 75px;
+    height: 75px;
+    margin-top: -10px;
+    margin-left:5px;
+    border-width:4px;
+}
+.detail-header-head .btn{
+    font-size:1.1rem;
+    margin-top: 10px;
+}
+
+.detail-labels-ability-wrap{
+    margin-left:10px;
+    margin-bottom:8px;
+}
+.detail-labels-abilitys{
+    padding:2px;
+    border:1px solid;
+    border-radius: 3px;
+}
+.detail-labels-abilitys:first-child{
+    color: rgb(70,226,142);
+    border-color:rgb(70,226,142);
+}
+.detail-labels-abilitys:nth-child(2){
+    color: rgb(255,141,118);
+    border-color:rgb(255,141,118);
+}
+.detail-labels-abilitys:last-child{
+    color: rgb(238,154,253);
+    border-color:rgb(238,154,253);
+}
+
+.detail-tabs,
+.detail-pages{
+    margin: 10px 0;
+    background:#fff;
+}
+.detail-contents{position:relative;padding-bottom:20px;}
+.detail-tabs{
+    border-top:1px solid rgb(234,236,234);
+    border-bottom:1px solid rgb(234,236,234);
+    height:40px;
+}
+.detail-tabs-li{
+    list-style:none;
+    position:absolute;
+    top:0;
+    width:33.3333%;
+    font-size:1.2rem;
+    text-align: center;
+    margin-left:-1px;
+    padding: 10px 0;
+    border-top:2px solid #fff;
+    border-bottom:2px solid #fff;
+}
+.detail-tabs-li-1{left:0;}
+.detail-tabs-li-2{left:33.3333%;}
+.detail-tabs-li-3{right:0;}
+.detail-tabs-li label{
+    display:block;
+    border-left:1px solid rgb(241,241,241);
+}
+.detail-tabs-li:first-child{
+    border-left:none;
+    margin-left:0;
+}
+
+input[type='radio']{position: absolute;top:-999999px;}
+
+
+
+
+.detail-pages{
+    padding: 10px 15px;
+    overflow: hidden;
+    white-space: normal;
+}
+#detail-course-page,
+#detail-experience-page,
+#detail-comments-page{
+    display:none;
+}
+.detail-pages h4{
+    font-size:1.2rem;
+    margin: 10px 0;
+}
+.detail-pages h4 i{
+    display: inline-block;
+    width: 20px;
+    height:20px;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size:contain;
+    vertical-align: middle;
+    margin-right:8px;
+}
+.detail-person-intro-title i{
+    margin-top:-2px;
+    background:url(../img/detail-intro.png);
+}
+.detail-person-education-title i{
+    margin-top:-3px;
+    background:url(../img/detail-education.png);
+}
+.detail-pages p{
+    color:rgb(127,127,127);
+}
+input[type='radio']:checked + .detail-tabs-li{
+    color:rgb(0,122,255);
+    border-bottom-color:rgb(0,122,255);
+}
+#detail-course:checked ~ #detail-course-page{display:block;}
+#detail-experience:checked ~ #detail-experience-page{display:block;}
+#detail-comments:checked ~ #detail-comments-page{display:block;}
+
+/* 评论内容区*/
+#detail-comments-page{
+    margin: 10px;
+    padding-top: 50px;
+    padding-left:10px;
+    padding-right:10px;
+    position:relative;
+}
+/*评论 tabs 假*/
+.detail-comments-tabs-ul{
+    position:absolute;
+    width: 100%;
+    height: 50px;
+    top:-1px;left:0;
+    margin:0;
+    border:1px solid rgb(232,232,232);
+}
+/*评论大框*/
+.detail-comments-wraps{
+    display:none;
+}
+/*评论的tabs*/
+.detail-comments-tabs-li{
+    position:absolute;
+    top:0;
+    width:25%;
+    height:48px;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 2.4;
+    font-size:1.1rem;
+    border-left:1px solid rgb(239,239,239);
+    color:rgb(172,172,172);
+}
+.detail-comments-tabs-li label{
+    display:block;
+}
+.detail-comments-tabs-li .detail-comments-num{
+    line-height: 1;
+    color:rgb(255,127,33);
+}
+/*全部评价的tabs*/
+#detail-comments-all + .detail-comments-tabs-li{
+    left:0;
+    border-left:0;
+}
+#detail-comments-all:checked + .detail-comments-tabs-li{
+    background:rgb(0,122,255);
+    color:#fff;
+}
+#detail-comments-all:checked + .detail-comments-tabs-li .detail-comments-num{
+    color:#fff;
+}
+#detail-comments-all:checked ~ .detail-comments-wraps{display:block;}
+
+
+/*好评的tabs*/
+#detail-comments-good + .detail-comments-tabs-li{
+    left:25%;
+}
+#detail-comments-good:checked + .detail-comments-tabs-li{
+    background:rgb(0,122,255);
+    color:#fff;
+}
+#detail-comments-good:checked + .detail-comments-tabs-li .detail-comments-num{
+    color:#fff;
+}
+#detail-comments-good:checked ~ .detail-comments-wraps{display:block;}
+
+
+
+/*中评的tabs*/
+#detail-comments-middle + .detail-comments-tabs-li{
+    left:50%;
+}
+#detail-comments-middle:checked + .detail-comments-tabs-li{
+    background:rgb(0,122,255);
+    color:#fff;
+}
+#detail-comments-middle:checked + .detail-comments-tabs-li .detail-comments-num{
+    color:#fff;
+}
+#detail-comments-middle:checked ~ .detail-comments-wraps{display:block;}
+
+
+
+/*差评的tabs*/
+#detail-comments-bad + .detail-comments-tabs-li{
+    left:75%;
+}
+#detail-comments-bad:checked + .detail-comments-tabs-li{
+    background:rgb(0,122,255);
+    color:#fff;
+}
+#detail-comments-bad:checked + .detail-comments-tabs-li .detail-comments-num{
+    color:#fff;
+}
+#detail-comments-bad:checked ~ .detail-comments-wraps{display:block;}
+
+
+/*每条评论*/
+.comments-item{
+    border-bottom:1px solid rgb(246,246,246);
+    padding:10px 0;
+}
+.comments-headpicture,
+.comments-contents{
+    float:left;
+}
+.comments-headpicture{
+    margin-left:5px;
+    width:50px;height:50px;
+}
+.comments-contents{
+    width:74%;
+    margin-left:3%;
+}
+.comments-star-wrap{margin-top:7px;}
+.comments-name,.comments-star-wrap{float:left;margin-right:10px;}
+.comments-time{float:right;margin-top:10px;}
+.comments-course{
+    clear:both;
+    margin-bottom:1rem;
+    color:rgb(127,127,127);
+}
+
+.comments-stars{
+    display:inline-block;
+    width:14px;height:14px;
+    background:url(../img/comment-star.png);
+    background-repeat:  no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.detail-pages .comments-content{color:#000;}
+
+.btn-more-comment{
+    margin: 10px auto;
+    font-size: 1.3rem;
+    width:90%;
+}
+
