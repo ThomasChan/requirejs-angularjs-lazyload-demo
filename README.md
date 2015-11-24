@@ -1,3 +1,2 @@
-#来取经
+#requirejs+angularjs, 懒加载html/js
 
-###The Magic bridge between high school students and university students
