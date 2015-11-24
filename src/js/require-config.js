@@ -1,6 +1,5 @@
 window.APP_CONFIG = {
-    host   : 'http://123.57.232.136/wukong/v1/',
-    // host   : 'http://api.qujing.com:2334/api/',
+    host   : 'http://api.test.com:2334/api/',
     dev    : true,
     version: +new Date()
 }
