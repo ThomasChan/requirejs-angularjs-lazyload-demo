@@ -25,6 +25,6 @@ var server = http.createServer(function(req, res) {
     router(req, res, finalhandler(req, res))
 })
 
-server.listen(2334,'api.qujing.com')
-console.log(' qujing.com LISTEN AT PORT 2334')
+server.listen(2334,'api.test.com')
+console.log(' api.test.com LISTEN AT PORT 2334')
 
