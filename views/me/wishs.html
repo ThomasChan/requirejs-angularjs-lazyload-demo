@@ -1,0 +1,41 @@
+<div class="slide-ani">
+
+<ng-include src="'views/header.html?v=0.0.0.0.1'">
+...
+</ng-include>
+<style>
+    
+.setting-content{
+    padding-top:50px;
+}
+.no-data{
+    color: #888;
+    font-size: .9rem;
+    line-height: 1.3;
+    text-align: center;
+    margin-top: 55%;
+}
+</style>
+<div class="setting-content" ng-controller='WishList'>
+
+    <p class="no-data" ng-show='!lists.length'>您的心愿单里还没有师友<br/>把你感兴趣的师友加入心愿单吧</p>
+    <div class="item-ing" ng-repeat='item in lists' ng-show='lists.length'>
+        <div class="clearfix">
+            <div class="headpic">
+                <img src="" alt="导师头像">
+            </div>
+            <div>
+                <h3>导师实名</h3>
+                <p>导师院校/年纪</p>
+            </div>
+        </div>
+        <ul>
+            <li ng-repeat='course in item.course_list'>
+                <div>课程名称：{{course.title}}</div>
+                <div>{{course.price_offline}} 元/ {{course.duration}} 分钟</div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+</div>

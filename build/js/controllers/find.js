@@ -1,0 +1,1 @@
+window.application.components.controller("FindCtrl",["$rootScope","$scope","$location","API",function(t,n,r,o){n.tabs={tabs:[{html:"好评",index:1},{html:"最新",index:2},{html:"取经故事",index:3}],current:r.search().t||~~localStorage.findTabsCurrent||1,tabsCurrent:function(t){return+n.tabs.current==t},tabChange:function(t){localStorage.findTabsCurrent=n.tabs.current=t}}}]);

@@ -1,0 +1,1 @@
+window.application.components.controller("GoodCtrl",["$rootScope","$scope","$location","API",function(o,t,n,c){t.lists=[],c.go(c.getCommentList,!1,{Sort:"Score"}).then(function(o){angular.forEach(o.data,function(o){t.lists.push(o)})},function(o){t.lists.push([])})}]);

@@ -1,0 +1,36 @@
+
+
+<ng-include src="'views/header.html?v=1'">
+...
+</ng-include>
+
+<style>
+.comment{margin:0 0 1rem;border-radius: .5rem;overflow: hidden;background: white;border:1px solid #ddd;padding:0 1rem 1rem 1rem;}
+    .mentor-last-comment-content{line-height: 1.86;font-size:1rem;color:#666;margin-bottom:1rem;}
+    .related-topic{font-size:.67rem;display: block;color:#aaa;}
+    .mentor-last-comment-user{text-align: center; margin:1.86rem 0 0}
+        .comment-hr{border:1px solid #ddd;height:1px;margin:0 auto 1.5rem;}
+        /*.mentor-last-comment-user-content{display:inline-block;}*/
+            .mentor-last-comment-user:before,.mentor-last-comment-user:after{content:'';display:table;clear:both;}
+            .mentor-last-comment-user-portrait{float:left;width:3rem;height:3rem;border-radius:100%;overflow: hidden;margin-right:.8rem}
+                .mentor-last-comment-user-portrait img{display: block;height:100%;}
+            .mentor-last-comment-user-info{overflow: hidden;width:auto;text-align: left}
+                .mentor-last-comment-user-name{margin:.2rem 0;font-size:1rem;color:#666;}
+                .mentor-last-comment-time{font-size: .8rem;margin:.2rem 0;display: block;color:#888;}
+</style>
+<div class="content comments-wrap" ng-controller='CommentsCtrl'>
+    <div class="comment" ng-repeat='comment in comments'>
+        <p class="mentor-last-comment-content" ng-bind-html='comment.content | sanitize'></p>
+        <p class="related-topic">参与话题：{{comment.highlight}}</p>
+        <div class="mentor-last-comment-user">
+            <div class="comment-hr"></div>
+            <div class="comment-user-content">
+                <div class="mentor-last-comment-user-portrait"><img ng-src="{{comment.avatar}}" alt="{{comment.nickname}}"></div>
+                <div class="mentor-last-comment-user-info">
+                    <h6 class="mentor-last-comment-user-name">{{comment.nickname}}</h6>
+                    <i class="mentor-last-comment-time">{{comment.date}}</i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

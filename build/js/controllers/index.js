@@ -1,0 +1,1 @@
+window.application.components.controller("IndexCtrl",["$rootScope","$scope","$location","API",function(t,o,n,r){r.go(r.getHomepageData).then(function(t){o.star_mentor_list=t.data.star_mentor_list,o.rec_mentor_list=t.data.rec_mentor_list,o.qujing_story=t.data.qujing_story},function(t){o.ServerError=t})}]);

@@ -1,0 +1,48 @@
+
+
+<ng-include src="'views/header.html?v=0.0.0.0.1'">
+...
+</ng-include>
+<style>
+
+.me-options{
+    border: 1px solid #ddd;margin-top:1.6rem;
+}
+.me-options li{
+    overflow:hidden;
+}
+.me-options div{
+    display:block;background:white;padding:0 0 0 1rem;color:#555;line-height: 2.8;
+    border-top:1px solid #ddd;
+}
+.me-options li:first-child div,
+.me-options .blank+li div{
+    border-top:0;
+}
+.me-options .blank{
+    height:1.6rem;
+}
+</style>
+<div class="content" ng-controller='BaseInfo'>
+    <div class="info-header">
+        <div class="info-header-inner">
+            <div class="info-meet">见过<span class="number">0</span>次</div>
+            <div class="info-header-headpic">
+                <div class="headpic"><img ng-src="{{user.avatar}}" alt="{{user.realname}}"></div>
+                <h1 class="info-header-name">{{user.nickname}}</h1>
+                <h6 class="info-header-sub-name">{{user.realname}}</h6>
+            </div>
+            <div class="info-write">写过<span class="number">0</span>评价</div>
+        </div>
+    </div>
+    <ul class='me-options'>
+        <li ng-repeat='field in fields' ng-class='{blank:!field.link}'>
+            <div ng-if='field.html'>
+                <span class="field-name">{{field.html}}</span>
+                <span ng-if='field.value'>{{field.value}}</span>
+                <span ng-if='!field.value'>点击右上角编辑资料~</span>
+            </div>
+            <div style='background:transparent;border-top:1px solid #ddd;border-bottom:1px solid #ddd;height:100%' ng-if='!field.html'>&nbsp;</div>
+        </li>
+    </ul>
+</div>

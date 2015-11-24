@@ -1,0 +1,1 @@
+define(function(r){return function(){var n=function(r,n){var o={load:["$q","$rootScope",function(n,o){var t=r;return e(n,o,t)}]};return n&&angular.merge(o,n),o},e=function(n,e,o){var t=n.defer();return r(o,function(){t.resolve(),e.$apply()}),t.promise};return{resolve:n}}()});

@@ -1,0 +1,1 @@
+window.application.components.controller("TabsCtrl",["$rootScope","$scope","$location",function(t,o,n){o.isIndex="/"==n.path()?"tabs-button-active":"",o.isFind="/find"==n.path()?"tabs-button-active":"",o.isMe="/me"==n.path()?"tabs-button-active":""}]);

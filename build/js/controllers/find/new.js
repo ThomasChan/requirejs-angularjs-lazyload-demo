@@ -1,0 +1,1 @@
+window.application.components.controller("NewCtrl",["$rootScope","$scope","$location","API",function(o,t,n,c){t.lists=[],c.go(c.getRecMentorList).then(function(o){angular.forEach(o.data,function(o){t.lists.push(o)})},function(o){t.lists.push([])})}]);

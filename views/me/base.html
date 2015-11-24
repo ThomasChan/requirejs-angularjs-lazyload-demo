@@ -1,0 +1,89 @@
+<div class="slide-ani">
+
+<ng-include src="'views/header.html?v=0.0.0.0.3'">
+...
+</ng-include>
+<style>
+.setting-content{
+    padding-top:50px;
+}
+.me-options{
+    border: 1px solid #ddd;margin-top:1.6rem;
+}
+.me-options li{
+    overflow:hidden;
+}
+.me-options li div{color:#888;}
+.me-options .field{
+    display:block;background:white;padding:0 0 0 1rem;color:#555;line-height: 2.8;
+}
+.me-options .field>div{
+    border-top:1px solid #ddd;
+}
+.me-options li:first-child .field>div,
+.me-options .blank+li .field>div{
+    border-top:0;
+}
+.me-options .blank{
+    height:1.6rem;
+}
+.field-name{float:left;width:5rem;}
+.field-value{overflow: hidden;width:auto;text-align: right;padding-right:1rem;}
+.field-value a{display:block;}
+.field::after{content:'';clear:both;display:block;height:0;}
+.headpicture{
+    width: 3rem;
+    height:3rem;
+    border-radius:100%;
+    overflow: hidden;
+    border: .2rem solid white;
+    display: inline-block;
+    float:right;
+    margin: 3px 1rem 3px auto;
+}
+.headpicture img{
+    height:100%;
+    border:none;
+}
+.options,.logout{
+    display: block;
+    width:100%;
+    line-height: 2.8;
+    text-align: center;
+    border:1px solid #ddd;
+    background: white;
+}
+.logout{
+    color: rgb(255, 55, 71);
+    margin-top:-1px;
+}
+.me-options .fa{
+    font-size:1.3rem;color:#888;margin-left: .5rem
+}
+</style>
+<div class="setting-content" ng-controller='BaseInfo'>
+    <ul class='me-options'>
+        <li>
+            <div class="field" style='line-height:3.4'>
+                <div>
+                    <span class="field-name">头像</span>
+                    <span class="headpicture"><img src="//chenjunhao.cn/assets/images/wallhaven-181154.jpg" alt=""></span>
+                </div>
+            </div>
+        </li>
+        <li ng-repeat='field in fields' ng-class='{blank:!field.html}'>
+            <div class='field' ng-if='field.html'>
+                <div>
+                    <div class="field-name">{{field.html}}</div>
+                    <div class='field-value' ng-if='field.value && !field.link'>{{field.value}}</div>
+                    <div class='field-value' ng-if='field.value && field.link'><a href="{{field.link}}">{{field.value}}<span class='fa fa-angle-right'></span></a></div>
+                    <div class='field-value' ng-if='!field.value'>这里还是荒原捏~</div>
+                </div>
+            </div>
+            <div style='background:transparent;border-top:1px solid #ddd;border-bottom:1px solid #ddd;height:100%' ng-if='!field.html'>&nbsp;</div>
+        </li>
+    </ul>
+
+    <a class='logout' ng-click='doLogout()'>退出登录</a>
+</div>
+</div>

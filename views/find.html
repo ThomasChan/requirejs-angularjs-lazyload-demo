@@ -1,0 +1,108 @@
+<!--
+
+发现
+
+-->
+
+<ng-include src="'views/header.html?v=0.0.0.1'">
+...
+</ng-include>
+
+<style>
+.include-page{margin-top:1rem;}
+</style>
+
+<section class="content find-content" ng-controller='FindCtrl'>
+
+    <div class="bar-tabs-wrap">
+        <div class="bar-tabs">
+            <div class="tabs-tab" ng-repeat='tab in tabs.tabs' ng-class="{'tabs-tab-active':tabs.tabsCurrent(tab.index)}" ng-click='tabs.tabChange(tab.index)'>{{tab.html}}</div>
+        </div>
+    </div>
+
+<!-- 
+    <div class='include-page' ng-show='tabs.tabsCurrent(1)'>
+        <div ng-controller='PeopleCtrl'>
+            <div ng-repeat='item in lists' style='background:white;border-radius:5px;over:hidden;margin-bottom:1rem;padding:5px' class='clearfix'>
+                <a href="{{item.link}}" style='display:block'>
+                    <img style='max-width:100px;float:left;overflow:hidden' ng-src="{{item.headpic}}" alt="故事图标">
+                    <div style='padding:0 1rem;overflow:hidden;width:auto'>
+                        <h5>故事名称
+                            <span style='float:right'>最近回复时间</span>
+                        </h5>
+                        <p>最近回复内容</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div> -->
+
+    <div class='include-page' ng-show='tabs.tabsCurrent(1)'>
+        <div ng-controller='GoodCtrl'>
+            <div ng-repeat='item in lists' style='background:white;border-radius:5px;over:hidden;margin-bottom:1rem;padding:5px' class='clearfix'>
+                <a href="{{item.link}}" style='display:block'>
+                    <img style='max-width:100px;float:left;overflow:hidden;margin-top:8px' ng-src="{{item.headpic}}" alt="学员小照片">
+                    <div style='padding:0 0 0 1rem;overflow:hidden;width:auto'>
+                        <h5>{{item.name}}</h5>
+                        <p>学员评价</p>
+                        <div class="clearfix">
+                            <img style='max-width:50px;float:left;overflow:hidden;margin-top:8px' ng-src="{{item.headpic}}" alt="学员小照片">
+                            <div style='padding:0 1rem;overflow:hidden;width:auto'>
+                                <h6>课程名称</h6>
+                                <h6>用户名
+                                    <span style='margin-left:1rem'>院校</span>
+                                    <span style='border-left:1px solid #ddd'>年纪</span>
+                                </h6>
+                            </div>
+                            <span style='clear:both;font-size:.67rem'>评论时间</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class='include-page' ng-show='tabs.tabsCurrent(2)'>
+        <div ng-controller='NewCtrl'>
+            <div ng-repeat='item in lists' class='clearfix' style='background:white;border-radius:5px;over:hidden;margin-bottom:1rem;padding:5px'>
+                <a href="{{item.link}}" style='display:block'>
+                    <div style='max-width:100px;float:left;overflow:hidden;'>
+                        <img style='max-height:50px' ng-src="{{item.headpic}}" alt="每日一星">
+                        <h5 style='text-align:center'>用户名</h5>
+                    </div>
+                    <div style='overflow:hidden;width:auto;padding-left:1rem'>
+                        <h4>课程名称</h4>
+                        <h5>
+                            <span>{{item.school}}</span>
+                            <span style='border-left:1px solid #ddd'>{{item.ability}}</span>
+                        </h5>
+                        <span style='clear:both;font-size:.67rem'>课程发布时间</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class='include-page' ng-show='tabs.tabsCurrent(3)'>
+        <div ng-controller='PeopleCtrl'>
+            <div ng-repeat='item in lists' style='background:white;border-radius:5px;over:hidden;margin-bottom:1rem;padding:5px' class='clearfix'>
+                <a href="{{item.link}}" style='display:block'>
+                    <img style='max-height:100px;display:block' ng-src="{{item.img}}" alt="故事图标">
+                    <div style='padding:1rem'>
+                        <h3>{{qujing_story.title}}</h3>
+                        <h5>{{qujing_story.mentor_realname}} <span>{{qujing_story.mentor_position}}</span></h5>
+                        <p ng-bind-html='qujing_story.content_abs | sanitize'></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+
+<ng-include src="'views/tabs.html?v=0.0.0.1'">
+...
+</ng-include>

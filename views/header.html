@@ -1,0 +1,47 @@
+
+<div class="header header-fix" ng-controller='HeaderCtrl'>
+    
+
+
+    <div class="header-inner header-index" ng-if='isIndex'>
+        <!-- <a class="bar-select" href='#/chooseCity'>北京</a> -->
+        <label class="bar-label">
+            <a class="bar-input search-input" href='#/search'>搜索学校、课程...</a>
+            <button class="icon fa fa-search bar-search"></button>
+        </label>
+    </div>
+
+
+    <div class="header-inner" ng-if="isFind || isMe">
+        <h1 class="header-title" ng-if='isFind'>发现</h1>
+
+        <h1 class="header-title" ng-if='isMe'>我</h1>
+        <!-- <a href='#/me/setting' class="bar-button bar-button-right" ng-if='isMe'>设置</a> -->
+    </div>
+
+    <div class="header-inner" ng-if='isSign || isComments || isSearch || isMeOptions || isDetail'>
+        
+        <!-- 回退按钮 -->
+        <div class="fa fa-angle-left bar-go-back" ng-click='goBack()'></div>
+
+        <!-- 评论列表title -->
+        <h1 class="header-title" ng-if='isComments'>{{mentorName}}</h1>
+
+        <!-- 搜索结果页header的input -->
+        <label class="bar-label bar-label-search"  ng-if='isSearch'>
+            <span class="icon fa fa-search bar-search bar-search-page"></span>
+            <form ng-submit='search.do()'><input type="text" class="bar-input search-input" ng-model='search.keywords' placeholder='搜索学校、课程...' />
+            <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" /></form>
+        </label>
+
+        <!-- “我的”各页面header的title -->
+        <h1 class="header-title" ng-if='isMeOptions'>{{meOptions}}</h1>
+
+        <!-- <a href="#/me/base/update" class="bar-button bar-button-right" ng-if='isBase'>编辑资料</a> -->
+
+        <button class="icon fa fa-heart bar-btn-wish" ng-if='isDetail' style='margin-left:2.5rem'></button>
+        <button class="icon fa fa-share bar-btn-share" ng-if='isDetail'></button>
+
+    </div>
+
+</div>

@@ -1,0 +1,17 @@
+{
+  "name": "test",
+  "version": "0.0.8",
+  "homepage": "https://github.com/revolunet/angular-carousel",
+  "authors": [
+    "Julien Bouquillon <julien@bouquillon.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

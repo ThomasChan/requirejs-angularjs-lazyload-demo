@@ -1,84 +1,88 @@
+<!--
 
-<!-- css -->
-<link rel="stylesheet" href="/src/css/common.css">
-<link rel="stylesheet" href="/src/css/index.css">
+首页
 
-<!-- wrap -->
-<div class="wrapper {{sidebarStatus ? 'wrapper-slide' :'';}}" style="width:100%;" ng-controller="IndexController">
+-->
 
-    <a class="header-account header-account-login header-account-slide" ng-click="sidebarToggle()" style="{{!sidebarStatus ? 'display:none;' :'';}}width:100%;height:100%;right:0;z-index:99999;"></a>
+<link rel="stylesheet" href="/build/css/angular-carousel.min.css">
 
-    <!-- 顶栏 -->
-    <div class="header" style="position: fixed;top: 0;left: 0;z-index: 1000000;">
-        <h1 class="title">application</h1>
-        <label for="header-sceening-input" class="header-sceening">
-            <img src="src/img/header-sceening.png" alt="">
-        </label>
-        <input type="checkbox" id="header-sceening-input">
-        <div class="header-sceening-wrap">
-            <div class="triangle"></div>
-            <ul class="header-sceening-options">
-                <li class="header-sceening-option"><a href="index.html?">a</a></li>
-                <li class="header-sceening-option"><a href="index.html?">b</a></li>
-                <li class="header-sceening-option"><a href="index.html?">c</a></li>
-            </ul>
-        </div>
+<ng-include src="'views/header.html?v=3'">
+...
+</ng-include>
 
-        <!-- if $this->user_id > 0 -->
-        <a class="header-account header-account-login" ng-click="sidebarToggle()">
-            <img src="src/img/header-account.png">
+<style>
+    #star-section-slider{height: 315px;}
+    .index-recommend{background:white;border-radius:5px;overflow:hidden;border:1px solid #ddd}
+</style>
+
+
+<section class="content" ng-controller='IndexCtrl'>
+
+    <h6 class="error" style='color:red' ng-show='ServerError'>{{ServerError}}</h6>
+
+    <ul id="star-section-slider" rn-carousel>
+        <!-- 明星导师 -->
+        <li ng-repeat='star in star_mentor_list' class="index-recommend">
+            <a href="#/mentor?id={{star.user_id}}" style='display:block'>
+                <img style='max-height:200px;width:100%' ng-src="{{star.portrait}}" alt="每日一星">
+                <div style='padding:1rem'>
+                    <h3>{{star.highlight}}</h3>
+                    <h5>{{star.realname}}
+                        <span style='margin-left:20px'>{{star.position}}</span>
+                        <!-- <span style='border-left:1px solid #ddd'>{{star.ability}}</span>
+                        <span style='border-left:1px solid #ddd'>{{star.grade}}</span> -->
+                    </h5>
+                    <p><span ng-repeat='award in star.awards' style='margin-right:10px'>{{award}}</span></p>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+    <!-- 运营banner -->
+    <section class="slide index-slide" style='margin-top:1rem;background:white;border-radius:5px;overflow:hidden;border:1px solid #ddd'>
+        <a href="{{qujing_story.story_url}}" style='display:block'>
+            <img style='max-height:200px;width:100%' ng-src="{{qujing_story.img}}" alt="每日一星">
+            <div style='padding:1rem'>
+                <h3>{{qujing_story.title}}</h3>
+                <h5>{{qujing_story.mentor_realname}} <span>{{qujing_story.mentor_position}}</span></h5>
+                <p ng-bind-html='qujing_story.content_abs | sanitize'></p>
+            </div>
         </a>
-        <!-- else -->
-        <!-- <a href="login.html" class="header-account">
-            <img src="src/img/header-account.png" alt="">
-        </a> -->
-
-    </div>
-    
-    <div class="loading-wrap" style="{{loadFinish ? 'display:none':'';}}"><span class="loading style-2"></span></div>
+        <a href="#/find?t=3" style='display:block;text-align:center;line-height:2;border-top:1px dashed #f4f4f4'>更多故事 ></a>
+    </section>
 
     <!-- 列表 -->
-    <div class="item-lists {{!loadFinish?'autoload':'';}}" style="margin-top:50px;  padding-bottom: 70px;">
-        <!-- 单个项目 -->
-        <div class="item" ng-repeat="item in IndexData">
-            <a href="#/shijie/{{item.href}}"></a>
-            <!-- 上半部分 -->
-            <div class="item-labels clearfix">
-                <!-- 头像 -->
-                <div class="item-headpicture">
-                    <div class="account-headpicture headpicture"><img src="{{item.headpic_src}}" alt=""></div>
-                    <div class="item-wanna-meet"><i class="detail-upvote"></i>{{item.upvote}}人想见</div>
+    <section class="index-people-lists" style='margin-top:1rem'>
+        
+        <!-- 每个人 -->
+        <div ng-repeat='mentor in rec_mentor_list' style='margin-top:.5rem;background:white;border-radius:5px;overflow:hidden;border:1px solid #ddd'>
+            <a href="#/mentor?id={{mentor.user_id}}" style='display:block'>
+                <div class='clearfix'>
+                    <img style='max-width:100px;float:left;overflow:hidden' ng-src="{{mentor.avatar}}" alt="每日一星">
+                    <h3>{{mentor.slogan}}</h3>
                 </div>
-                <!-- 大学和一句话介绍和能力？ -->
-                <div class="item-detail">
-                    <!-- 名字和状态 -->
-                    <div class="item-name">
-                        <h2>{{item.username}}</h2>
-                        <div class="btn btn-status">{{item.user_status}}</div>
-                    </div>
-                    <ul class="item-school">
-                        <li>{{item.city}}</li>
-                        <li>{{item.school}}</li>
-                        <li>{{item.ability}}</li>
-                    </ul>
-                    <p class="item-short-intro">{{item.short_intro}}</p>
-                    <p class="item-ability item-ability-1" ng-repeat="course in item.course">{{course}}</p>
+                <div style='padding:1rem'>
+                    <h5>{{mentor.realname}}
+                        <span style='margin-left:20px'>{{mentor.position}}</span>
+                        <!-- <span style='border-left:1px solid #ddd'>{{mentor.ability}}</span>
+                        <span style='border-left:1px solid #ddd'>{{mentor.grade}}</span> -->
+                    </h5>
+                    <p>
+                        <h5 ng-repeat='course in mentor.course_list'>
+                            <a href="#/course?id={{course.course_id}}">{{course.title}}</a>
+                        </h5>
+                    </p>
                 </div>
-            </div>
-            <!-- 个人介绍 -->
-            <div class="item-long-intro">
-                <p>{{item.long_intro}}</p>
-            </div>
+            </a>
         </div>
-        <button style="margin:auto" id="loadMore" class="btn btn-style-9" ng-click="loadMore()">more</button>
-    </div>
 
-    <div class="demand-expand-lists">
-        <a class="btn btn-style-10">list</a>
-        <a href="/需求发布/需求展示.html" class="btn btn-style-10">another</a>
-    </div>
-</div>
+    </section>
 
-<slidebar ng-include="'/views/sidebar.html'">
+
+</section>
+
+
+
+<ng-include src="'views/tabs.html?v=0.0.0.1'">
 ...
-</slidebar>
+</ng-include>

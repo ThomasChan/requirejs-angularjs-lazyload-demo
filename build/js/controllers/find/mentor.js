@@ -1,0 +1,1 @@
+window.application.components.controller("PeopleCtrl",["$rootScope","$scope","$location","API",function(o,t,n,i){t.lists=[],i.go(i.getQujingStoryList).then(function(o){angular.forEach(o.data,function(o){t.lists.push(o)})},function(o){t.lists.push([])})}]);

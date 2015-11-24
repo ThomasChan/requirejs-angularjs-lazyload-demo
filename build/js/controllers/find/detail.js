@@ -1,0 +1,1 @@
+window.application.components.controller("mentorDetail",["$rootScope","$scope","$location","$routeParams","API",function(o,n,e,t,r){user_id=e.search().id,n.mentor={},r.go(r.getMentorHomeInfo,!1,{MentorId:user_id}).then(function(o){n.mentor=o.data},function(o){console.log(o)})}]);

@@ -1,0 +1,85 @@
+
+
+<ng-include src="'views/header.html?v=0.0.0.0.1'">
+...
+</ng-include>
+
+<style>
+.me-options{
+    border: 1px solid #ddd;
+}
+.me-options li{
+    overflow:hidden;
+}
+.me-options a{
+    display:block;background:white;padding:0 0 0 1rem;color:#555;line-height: 2.8
+}
+.me-options div{
+    border-top:1px solid #ddd;border-left:0;border-right:0;padding-right:1rem
+}
+.me-options .fa{
+    font-size:1.3rem;line-height:2.2;float:right;color:#888;
+}
+.me-options li:first-child a div{
+    border-top:0;
+}
+.btn{margin-top:1rem;}
+
+.step{}
+</style>
+
+<div class='content' ng-controller='CreateMentor'>
+
+    <div class="step step1" ng-show='steps.stepsCurrent(1)'>
+        <form>
+            <label class='label-white label-white-first' for=""><input type="text" placeholder='姓名'></label>
+            <label class='label-white label-white-last' for=""><input type="text" placeholder='身份证号'></label>
+            <button class="btn" ng-click='steps.nextStep(2)'>下一步</button>
+        </form>
+    </div>
+
+    <div class="step step2" ng-show='steps.stepsCurrent(2)'>
+        <form>
+            <label class='label-white label-white-first' for=""><input type="text" placeholder='学校'></label>
+            <label class='label-white' for=""><input type="text" placeholder='院系'></label>
+            <label class='label-white' for=""><input type="text" placeholder='年纪'></label>
+            <label class='label-white' for=""><input type="text" placeholder='班级'></label>
+            <label class='label-white' for=""><input type="text" placeholder='入学时间'></label>
+            <label class='label-white label-white-last' for=""><input type="text" placeholder='毕业时间'></label>
+            <p>请提交能证明你教育经历的证件照片，如：学生证、在读证明、毕业证等（需包含照片、姓名、专业、校方印章等有效信息）</p>
+            <div class="uploads">
+                <div class="uploadsFileView" style='overflow:hidden;position:relative;height:200px'>
+                    <div style='position:absolute;width:60%;height:1rem;background:#333;padding:3px;top:0;left:0;right:0;bottom:0;margin:auto;'
+                     class="uploadsFileProgress" ng-show='uploadsfiles.progress > 0'><div style='width:{{uploadfiles.progress}}%;height:100%;background:#fff'>{{uploadfiles.progress}}%</div></div>
+                    <img style='display:block;width:100%' ng-src="{{uploadfiles.src}}" alt="{{uploadsfiles.alt}}">
+                </div>
+                <span style='color:red' ng-show='errorMsg'>{{errorMsg}}{{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}</span>
+                <button style='height:auto' ng-class="{disabled: uploadfiles.disabled}" ng-disabled='{{uploadfiles.disabled}}' class="btn" type='file' ngf-select='uploadFiles($file, $invalidFiles)' accept='image/*' ngf-max-size='1MB'>{{uploadfiles.button}}</button>
+            </div>
+            <button class="btn" ng-click='steps.nextStep(3)'>下一步</button>
+        </form>
+    </div>
+    
+    <div class="step step3" ng-show='steps.stepsCurrent(3)'>
+        <form>
+            <label class='label-white label-white-first' for=""><input type="text" placeholder='课程标题'></label>
+            <label class='label-white' for=""><input type="text" placeholder='课程描述'></label>
+            <label class='label-white' for=""><input type="text" placeholder='课时（分钟）'></label>
+            <label class='label-white' for=""><input type="text" placeholder='价格'></label>
+            <label class='label-white label-white-last' for=""><input type="text" placeholder='标签'></label>
+            <button class="btn" ng-click='steps.nextStep(4)'>下一步</button>
+        </form>
+    </div>
+
+    <div class="step step4" ng-show='steps.stepsCurrent(4)'>
+        <ul class="me-options">
+            <li><a href="#/me/mentor/create/other?action=gaokao"><div>高考情况<span class="fa fa-angle-right"></span></div></a></li>
+            <li><a href="#/me/mentor/create/other?action=fangxiang"><div>擅长方向<span class="fa fa-angle-right"></span></div></a></li>
+            <li><a href="#/me/mentor/create/other?action=huojiang"><div>获奖情况<span class="fa fa-angle-right"></span></div></a></li>
+            <li><a href="#/me/mentor/create/other?action=activitys"><div>活动实践<span class="fa fa-angle-right"></span></div></a></li>
+            <li><a href="#/me/mentor/create/other?action=self_recommoned"><div>自我评价<span class="fa fa-angle-right"></span></div></a></li>
+            <li><a href="#/me/mentor/create/other?action=stories"><div>成长故事<span class="fa fa-angle-right"></span></div></a></li>
+            <li><a href="#/me/mentor/create/other?action=manifesto"><div>导师宣言<span class="fa fa-angle-right"></span></div></a></li>
+        </ul>
+    </div>
+</div>

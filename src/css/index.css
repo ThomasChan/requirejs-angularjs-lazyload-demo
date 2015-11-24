@@ -199,7 +199,7 @@ html,body,.wrapper{
     vertical-align: middle;
     margin-top:-4px;
     width:18px;height:16px;
-    background-image:url(../img/login-account-ico.png);
+    background-image:url(/src/img/login-account-ico.png);
     background-repeat: no-repeat;
     background-position-x:1px;
     background-size:cover;

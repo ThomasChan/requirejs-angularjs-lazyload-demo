@@ -1,0 +1,127 @@
+<!--
+
+我的
+
+-->
+
+<ng-include src="'views/header.html?v=0.0.0.0.3'">
+...
+</ng-include>
+
+
+<style>
+
+.headpicture{
+    width: 4.8rem;
+    height:4.8rem;
+    border-radius:100%;
+    overflow: hidden;
+}
+.headpicture img{
+    height:100%;
+    border:none;
+}
+
+
+.wrap{
+    width:100%;
+}
+.info-headpic{
+    line-height: 5;
+    height:6rem;
+    border-top:1px solid rgb(229,230,228);
+    border-bottom:1px solid rgb(229,230,228);
+    background:#fff;
+    padding:0 1rem;
+}
+.info-headpic>.headpicture{margin-top:8px;}
+.info-headpic>span.fr{
+    font-size: 1.3rem;color:#888;line-height: 4.5
+}
+.info-headpic span,
+.info-headpic>div{display:inline-block;}
+.info-headpic .title{font-size:1.2rem;color:#555;margin-left:1rem;margin-top:0;margin-bottom: 0}
+.info-headpic .fl{float: left;}
+.info-headpic .fr{float: right;}
+
+.me-options{
+    border: 1px solid #ddd;margin-top:1.6rem;
+}
+.me-options li{
+    overflow:hidden;
+}
+.me-options a{
+    display:block;background:white;padding:0 0 0 1rem;color:#555;line-height: 2.8
+}
+.me-options div{
+    border-top:1px solid #ddd;border-left:0;border-right:0;padding-right:1rem
+}
+.me-options .fa{
+    font-size:1.3rem;line-height:2.2;float:right;color:#888;
+}
+.me-options li:first-child a div,
+.me-options .blank+li div{
+    border-top:0;
+}
+.me-options .blank{
+    height:1.6rem;
+}
+.some-wrap{padding:1rem;}
+</style>
+
+<section class="content" style='padding-left:0;padding-right:0' ng-controller='MeCtrl'>
+
+    <!-- 个人资料? -->
+    <div class="wrap" ng-if='isLogin'>
+        <a href="#/me/education">
+            <div class="info-headpic clearfix">
+                <div class="fl headpicture"><img src="//chenjunhao.cn/assets/images/wallhaven-181154.jpg" alt=""></div>
+                <div style='overflow:hidden;width:auto'>
+                    <p>约见过 xx 位导师</p>
+                    <p>写过 xx 评价</p>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="fl">
+                    <h6 class="title">{{user.realname}}</h6>
+                    <h6 class="title">性别</h6>
+                </div>
+                <div style='overflow:hidden;width:auto'>
+                    <h6>教育信息</h6>
+                    <span class='fa fa-angle-right'></span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="wrap" ng-if='!isLogin'>
+        <a href="#/me/signin">
+            <div class="info-headpic clearfix">
+                <div class="fl headpicture"><img src="//chenjunhao.cn/assets/images/wallhaven-181154.jpg" alt=""></div>
+                <h6 class="fl title">立即登录</h6>
+                <span class='fr fa fa-angle-right'></span>
+            </div>
+        </a>
+    </div>
+
+    <ul class='me-options'>
+        <li ng-repeat='option in options' ng-class='{blank:!option.link}'>
+            <a ng-if='!option.needLogin && option.link' href="{{option.link}}">
+                <div>{{option.html}}<span class='fa fa-angle-right'></span></div>
+            </a>
+            <a ng-if='option.needLogin && !isLogin && option.link' href="#/me/signin">
+                <div>{{option.html}}<span class='fa fa-angle-right'></span></div>
+            </a>
+            <a ng-if='option.needLogin && isLogin && option.link' href="{{option.link}}">
+                <div>{{option.html}}<span class='fa fa-angle-right'></span></div>
+            </a>
+            <div style='background:transparent;border-top:1px solid #ddd;border-bottom:1px solid #ddd;height:100%' ng-if='!option.link'>&nbsp;</div>
+        </li>
+    </ul>
+
+</section>
+
+
+
+<ng-include src="'views/tabs.html?v=0.0.0.1'">
+...
+</ng-include>

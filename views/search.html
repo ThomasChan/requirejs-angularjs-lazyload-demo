@@ -1,0 +1,61 @@
+
+
+<ng-include src="'views/header.html?v=0.0.0.9'">
+...
+</ng-include>
+
+
+
+<section ng-controller='SearchCtrl'>
+
+<style>
+.search-header{position: fixed;top:0;left:0;right:0;}
+.hot-keys p{margin:1rem;}
+    .keys{
+        display: inline-block;
+        padding:.5rem 1rem;
+        border-radius: 1.5rem;
+        color:rgb(255, 55, 71);
+        background: #aaa;
+        margin:1rem;
+    }
+.search-lists{padding-top:65px;}
+    .search-mentor{margin:0 1rem 1rem;border-radius:.5rem;background: white;border:1px solid #ddd;padding:1rem;}
+        .search-mentor-left{width:5rem;float:left;margin-right:1rem;}
+            .search-mentor-portrait{width:5rem;height:5rem;border-radius:100%;overflow: hidden;}
+                .search-mentor-portrait img{display:block;height:100%;}
+            .search-mentor-name{color:rgb(255, 55, 71);font-size:.9rem;text-align: center;}
+        .search-mentor-right{width:auto;overflow:hidden;}
+            .search-mentor-highlight{font-size:1.3rem;}
+            .search-mentor-position{padding:.4rem 1rem;color:#888;border:1px solid #888;border-radius:1rem;}
+            .search-mentor-follower{font-size:.7rem;color:#888;}
+            .search-mentor-follower>span{color:#555;}
+</style>
+
+    <!-- 列表 -->
+    <section class="search-lists">
+        
+        <div class="hot-keys" ng-show='lists.length == 0'>
+            <p>热门搜索</p>
+            <a href='#/search?keywords={{word}}' class="keys" ng-repeat='word in hotKeywords track by $index'>{{word}}</a>
+        </div>
+
+        <!-- 每个人 -->
+        <div class='search-mentor clearfix' ng-repeat='mentor in lists'>
+            <div class="search-mentor-left">
+                <div class="search-mentor-portrait">
+                    <img ng-src="{{mentor.portrait}}" alt="{{mentor.realname}}">
+                </div>
+                <h5 class="search-mentor-name">{{mentor.realname}}</h5>
+            </div>
+            <div class="search-mentor-right">
+                <h2 class="search-mentor-highlight">{{mentor.highlight}}</h2>
+                <h5 class="search-mentor-position">{{mentor.position}}</h5>
+                <div class="search-mentor-follower"><span><span class="fa fa-coffee"></span> {{mentor.follower}}人</span> 见过</div>
+            </div>
+        </div>
+
+    </section>
+
+
+</section>

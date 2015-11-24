@@ -1,0 +1,71 @@
+
+
+<ng-include src="'views/header.html?v=0.0.0.1.1'">
+...
+</ng-include>
+
+
+<link rel="stylesheet" href="/build/css/detail.css?v=0.0.0.1">
+<!-- wrap -->
+<div class="mentor-detail" ng-controller='mentorDetail'>
+
+    <div class="mentor-portrait">
+        <img ng-src="{{mentor.portraits}}" alt="{{mentor.realname}}">
+    </div>
+
+    <div class="mentor-info">
+        <h1 class="mentor-name">{{mentor.realname}}</h1>
+        <h5 class="mentor-awards">{{mentor.awards}}</h5>
+
+        <h5 class="mentor-position">{{mentor.position}}</h5>
+        <h5 class="mentor-locations">{{mentor.locations}}</h5>
+        
+        <h5 class="mentor-follows">{{mentor.follows}} 人想见</h5>
+        <h5 class="mentor-cee_score">{{mentor.cee_score}} 分</h5>
+
+        <h5 class="mentor-course_period">共讲课 {{mentor.total_course_period}} 时</h5>
+    </div>
+
+    <!-- <div class="mentor-timeslots_offline">{{mentor.timeslots_offline}}</div> -->
+
+
+    <div class="mentor-course" ng-repeat='course in mentor.course_lists'>
+        <ul class="mentor-course-info">
+            <li>{{course.price_offline}} 元 / {{course.duration}} 小时</li>
+            <li>星级：<span class="icon-star" ng-repeat='star in course.rating'></span></li>
+        </ul>
+        <h6 class="mentor-course-name">{{course.title}}</h6>
+        <p class="mentor-course-intro" ng-bind-html='course.intro | sanitize'></p>
+    </div>
+
+    <div class="mentor-about">
+        <h5 class="mentor-about-title">关于</h5>
+        <div class="mentor-about-portrait">
+            <img ng-src="{{mentor.portraits}}" alt="{{mentor.realname}}">
+        </div>
+        <p class="mentor-about-intro" ng-bind-html='mentor.intro | sanitize'></p>
+    </div>
+
+    <div class="mentor-comment">
+        <a href="#/mentor/comments?id={{mentor.user_id}}&mentor={{mentor.realname}}">
+            <h5 class="mentor-comment-title">评价</h5>
+            <div class="mentor-last-comment">
+                <p class="mentor-last-comment-content" ng-bind-html='mentor.last_comment.content | sanitize'></p>
+                <p class="related-topic">参与话题：{{mentor.last_comment.title}}</p>
+                <div class="mentor-last-comment-user">
+                    <div class="comment-hr"></div>
+                    <div class="mentor-last-comment-user-content">
+                        <div class="mentor-last-comment-user-portrait"><img ng-src="{{mentor.last_comment.avatar}}" alt="{{mentor.last_comment.nickname}}"></div>
+                        <div class="mentor-last-comment-user-info">
+                            <h6 class="mentor-last-comment-user-name">{{mentor.last_comment.nickname}}</h6>
+                            <i class="mentor-last-comment-time">{{mentor.last_comment.date}}</i>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn comment-btn-more">查看全部 {{mentor.comments}} 条评价</button>
+            </div>
+        </a>
+    </div>
+
+    <a class="order-demand" href='#/mentor/demand/create?id={{mentor.user_id}}&mentor={{mentor.realname}}'>预约</a>
+</div>

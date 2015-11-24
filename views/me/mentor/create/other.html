@@ -1,0 +1,52 @@
+
+<ng-include src="'views/header.html?v=0.0.0.0.1'">
+...
+</ng-include>
+
+<style>
+.btn{margin-top: 1rem}
+</style>
+
+<div class="content" ng-controller='UpdateCreateMentorInfo'>
+
+<form name='UpdateCreateMentorInfoForm' ng-submit='doUpdate.go()'>
+    <div>
+
+        <div class="step" ng-if='action==="gaokao"'>
+            <label class='label-white label-white-first' for=""><input required name='cee_hum_sci' ng-model='gaokao.cee_hum_sci' placeholder='高考文理' type="text"></label>
+            <label class='label-white' for=""><input required name='cee_score' ng-model='gaokao.cee_score' placeholder='高考成绩' type="text"></label>
+            <label class='label-white label-white-last' for=""><input required name='cee_ranking' ng-model='gaokao.cee_ranking' placeholder='高考排名' type="text"></label>
+        </div>
+
+        <div class="step" ng-if='action==="fangxiang"'>
+            <label class='label-white label-white-first label-white-last' for=""><input required name='strength' ng-model='fangxiang.strength' placeholder='擅长方向' type="text"></label>
+        </div>
+
+        <div class="step" ng-if='action==="huojiang"'>
+            <label class='label-white label-white-first label-white-last' for=""><input required name='awards' ng-model='huojiang.awards' placeholder='获奖' type="text"></label>
+        </div>
+
+        <div class="step" ng-if='action==="activitys"'>
+            <label class='label-white label-white-first label-white-last' for=""><input required name='activities' ng-model='activitys.activities' placeholder='活动实践' type="text"></label>
+        </div>
+
+        <div class="step" ng-if='action==="self-recommoned"'>
+            <label class='label-white label-white-first label-white-last' for=""><input required name='selfval' ng-model='self_recommoned.selfval' placeholder='自我评价' type="text"></label>
+        </div>
+
+        <div class="step" ng-if='action==="stories"'>
+            <label class='label-white label-white-first' for=""><input required name='story_title' ng-model='stories.story_title' placeholder='成长故事标题' type="text"></label>
+            <label class='label-white label-white-last' for=""><input required name='story' ng-model='stories.story' placeholder='成长故事' type="text"></label>
+        </div>
+
+        <div class="step" ng-if='action==="manifesto"'>
+            <label class='label-white label-white-first label-white-last' for=""><input required name='slogan' ng-model='manifesto.slogan' placeholder='导师宣言' type="text"></label>
+        </div>
+
+    </div>
+    <div style='color:#bada55' ng-if='successMsg'>更新成功~</div>
+    <div style='color:red' ng-if='errorMsg'>{{errorMsg}}</div>
+    <button type='submit' class="btn" ng-disabled='doUpdate.status'>{{doUpdate.button}}</button>
+</form>
+
+</div>

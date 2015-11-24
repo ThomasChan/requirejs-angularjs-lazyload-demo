@@ -1,0 +1,78 @@
+<div class="slide-ani">
+<ng-include src="'views/header.html?v=0.0.1'">
+...
+</ng-include>
+
+
+
+<section class="content">
+
+
+<div ng-controller='SignCtrl'>
+
+    <div class="tabs sign-tabs">
+        <div class='sign-tabs-button sign-tabs-button-left' ng-class="{'sign-tabs-button-active': signTabs=='登录取经'}" ng-click='tabsChange("登录取经")'>登录</div>
+        <div class='sign-tabs-button sign-tabs-button-right' ng-class="{'sign-tabs-button-active': signTabs=='注册取经'}" ng-click='tabsChange("注册取经")'>注册</div>
+    </div>
+    
+    <div class="sign-content" ng-switch on='signTabs'>
+        <div  ng-switch-when='登录取经'>
+            <form name='loginForm' ng-submit='doLogin()'>
+                <label class='label-white label-white-first label-input-icon label-input-icon-phone'>
+                    <span class="fa fa-mobile"></span>
+                    <input type="text" name='Phone' placeholder='您的手机号码' ng-model='login.phone' autocomplete='Phone' required ng-minlength='11' ng-pattern='/^1\d{10}$/'>
+                </label>
+                <label class='label-white label-white-last label-input-icon label-input-icon-password'>
+                    <span class="fa fa-lock"></span>
+                    <input type="password" name='Password' placeholder='密码不少于 6 个字符' ng-model='login.password' autocomplete='Password' required ng-minlength='6' ng-maxlength='20' ng-pattern='/^[a-zA-Z0-9_+=\-@#~,.\[\]()!%^*$]+$/'>
+                </label>
+                <label class="label-error">
+                    <div class="error" ng-show='loginForm.Phone.$error.minlength'><span class="fa fa-warning"></span>手机号码 11 位</div>
+                    <div class="error" ng-show='loginForm.Phone.$error.pattern'><span class="fa fa-warning"></span>手机号码格式不正确</div>
+                    <div class="error" ng-show='loginForm.Password.$error.minlength'><span class="fa fa-warning"></span>密码不少于 6 个字符</div>
+                    <div class="error" ng-show='loginForm.Password.$error.maxlength'><span class="fa fa-warning"></span>密码不多于 20 个字符</div>
+                    <div class="error" ng-show='loginForm.Password.$error.pattern'><span class="fa fa-warning"></span>密码含有不合法字符</div>
+                    <div class="error" ng-show='loginFormServerError'><span class="fa fa-warning"></span>{{loginFormServerError}}</div>
+                </label>
+                
+                <button type='submit'>登录</button>
+            </form>
+        </div>
+
+        <div ng-switch-when='注册取经'>
+            <form name="registerForm" ng-submit='doRegister()'>
+                <label class='label-white label-white-first'>
+                    <input type="text" name='Phone' placeholder='+86' ng-model='register.phone' required ng-minlength='11' ng-pattern='/^1\d{10}$/'>
+                    <button class="label-inline-button" ng-class="{disabled: requireSms.start}" ng-disabled='requireSms.start' ng-click='requireSms.do()'>{{requireSms.text_when_sms}}</button>
+                </label>
+                <label class="label-white">
+                    <input type="text" name='Vcode' placeholder='验证码' ng-model='register.vcode' required ng-minlength='6' ng-pattern='/^[\da-zA-Z]{6}$/'>
+                </label>
+                <label class="label-white">
+                    <input type="password" name='Password' placeholder='密码' ng-model='register.password' required ng-minlength='6' ng-maxlength='20' ng-pattern='/^[a-zA-Z0-9_+=\-@#~,.\[\]()!%^*$]+$/'>
+                </label>
+                <label class='label-white label-white-last'>
+                    <input type="text" name='Nickname' placeholder='昵称' ng-model='register.nickname' required ng-minlength='3' ng-pattern='/^[\u4e00-\u9fa5_a-zA-Z0-9]+$/'>
+                </label>
+                <label class="label-error">
+                    <div class="error" ng-show='registerForm.Phone.$error.minlength'><span class="fa fa-warning"></span>手机号码 11 位</div>
+                    <div class="error" ng-show='registerForm.Phone.$error.pattern'><span class="fa fa-warning"></span>手机号码格式不正确</div>
+                    <div class="error" ng-show='registerForm.Vcode.$error.minlength'><span class="fa fa-warning"></span>验证码是 6 位数字</div>
+                    <div class="error" ng-show='registerForm.Nickname.$error.minlength'><span class="fa fa-warning"></span>昵称不少于 3 个字符</div>
+                    <div class="error" ng-show='registerForm.Nickname.$error.pattern'><span class="fa fa-warning"></span>昵称含有不合法字符</div>
+                    <div class="error" ng-show='registerForm.Password.$error.minlength'><span class="fa fa-warning"></span>密码不少于 6 个字符</div>
+                    <div class="error" ng-show='registerForm.Password.$error.maxlength'><span class="fa fa-warning"></span>密码不多于 20 个字符</div>
+                    <div class="error" ng-show='registerForm.Password.$error.pattern'><span class="fa fa-warning"></span>密码含有不合法字符</div>
+                    <div class="error" ng-show='registerFormServerError'><span class="fa fa-warning"></span>{{registerFormServerError}}</div>
+                </label>
+                
+                <button type='submit'>注册</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</section>
+
+</div>

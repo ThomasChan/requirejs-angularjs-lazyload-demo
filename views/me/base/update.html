@@ -1,0 +1,56 @@
+<div class="slide-ani">
+
+<ng-include src="'views/header.html?v=0.0.0.0.1'">
+...
+</ng-include>
+
+<style>
+.setting-content{
+    padding-top:50px;
+}
+</style>
+<div class="setting-content" ng-controller='UpdateBaseInfo'>
+
+    <form name='phoneForm' ng-submit='doUpdate()' ng-if='action==="updatePhone"'>
+        <label class='label-white label-white-first label-input-icon label-input-icon-phone'>
+            <span class="fa fa-mobile"></span>
+            <input type="text" name='Phone' placeholder='手机' ng-model='update.Phone' required ng-minlength='11'>
+        </label>
+        <label class='label-white label-input-icon label-input-icon-vcode label-white-last'>
+            <span class="fa fa-code"></span>
+            <input type="text" name='Vcode' placeholder='验证码' ng-model='update.Vcode' required ng-minlength='6'>
+            <button class="label-inline-button" ng-class="{disabled: requireSms.start}" ng-disabled='requireSms.start' ng-click='requireSms.do()'>{{requireSms.text_when_sms}}</button>
+        </label>
+        <label class="label-error">
+            <div class="error" ng-show='phoneForm.Phone.$error.minlength'><span class="fa fa-warning"></span>手机号码 11 位</div>
+            <div class="error" ng-show='phoneForm.Vcode.$error.minlength'><span class="fa fa-warning"></span>验证码 6 个字符</div>
+            <div class="error" ng-show='phoneFormServerError'><span class="fa fa-warning"></span>{{phoneFormServerError}}</div>
+        </label>
+        
+        <button type='submit'>提交</button>
+    </form>
+
+
+    <form name='passwordForm' ng-submit='doUpdate()' ng-if='action==="updatePassword"'>
+        <label class='label-white label-white-first'>
+            <input type="text" name='OldPassword' placeholder='旧密码' ng-model='update.OldPassword' required ng-minlength='6'>
+        </label>
+        <label class='label-white'>
+            <input type="text" name='NewPassword' placeholder='新密码' ng-model='update.NewPassword' required ng-minlength='6'>
+        </label>
+        <label class='label-white label-white-last'>
+            <input type="text" name='ConNewPassword' placeholder='确认新密码' ng-model='update.ConNewPassword' required ng-minlength='6'>
+        </label>
+        <label class="label-error">
+            <div class="error" ng-show='passwordForm.OldPassword.$error.minlength'><span class="fa fa-warning"></span>密码不少于 6 位</div>
+            <div class="error" ng-show='passwordForm.NewPassword.$error.minlength'><span class="fa fa-warning"></span>密码不少于 6 位</div>
+            <div class="error" ng-show='passwordForm.NewPassword.$viewValue.length > 5 && passwordForm.ConNewPassword.$viewValue.length > 5 && passwordForm.NewPassword.$viewValue != passwordForm.ConNewPassword.$viewValue'><span class="fa fa-warning"></span>密码于确认密码不一致</div>
+            <div class="error" ng-show='passwordForm.OldPassword.$viewValue.length > 5 && passwordForm.NewPassword.$viewValue.length > 5 && passwordForm.NewPassword.$viewValue == passwordForm.OldPassword.$viewValue'><span class="fa fa-warning"></span>新密码不可与旧密码相同</div>
+            <div class="error" ng-show='passwordFormServerError'><span class="fa fa-warning"></span>{{passwordFormServerError}}</div>
+        </label>
+        
+        <button type='submit'>提交</button>
+    </form>
+
+</div>
+</div>
